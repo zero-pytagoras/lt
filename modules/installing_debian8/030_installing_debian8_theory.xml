@@ -1,7 +1,7 @@
 <?hard-pagebreak?>
 <section><title>Debian</title>
-<para>Debian is one of the oldest Linux distributions. I use Debian myself on almost every computer that I own (including <command>raspbian</command> on the <command>Raspberry Pi</command>).</para>
-<para>Debian comes in <command>releases</command> named after characters in the movie <command>Toy Story</command>. The <command>Jessie</command> release contains about 36000 packages.</para>
+<para>Debian Linux is one of the oldest Linux distributions, that was released in 1993. Debian  and its successers are, my choice almost on every device that I own, including <command>Raspberry Pi</command> with which I use Debian OS clonw named  <command>raspbian</command>.</para>
+<para>Debian <command>releases</command> are, usually named after the characters from the  <command>Toy Story</command> movie. The <command>bullseye</command>, the latest release, contains about 41000 packages.</para>
 <table frame='all'><title>Debian releases</title>
 <?dbfo table-width="50%" ?>
 <tgroup cols='3' align='left' colsep='1' rowsep='1'>
@@ -51,13 +51,33 @@
   <entry>8</entry>
   <entry>2015</entry>
 </row>
+<row>
+  <entry>stretch</entry>
+  <entry>9</entry>
+  <entry>2017</entry>
+</row>
+<row>
+  <entry>buster</entry>
+  <entry>10</entry>
+  <entry>2019</entry>
+</row>
+<row>
+  <entry>bullseye</entry>
+  <entry>11</entry>
+  <entry>2021</entry>
+</row>
+<row>
+  <entry>bookwork</entry>
+  <entry>12</entry>
+  <entry>Should be released in 2023</entry>
+</row>
 </tbody>
 </tgroup>
 </table>
-<para>There is never a fixed date for the next <command>Debian</command> release. The next version is released when it is ready.</para>
+<para>Unlike other GNU/Linux distributions, there is never a fixed date for the next <command>Debian</command> release. The next version is released when it is ready.</para>
 </section>
 <section><title>Downloading</title>
-<para>All these screenshots were made in November 2014, which means <command>Debian 8</command> was still in 'testing' (but in 'freeze', so there will be no major changes when it is released).</para>
+<para>All these screenshots were made in March 2023, which means <command>Debian 12</command> was still in 'testing' and should move in to 'freeze', so there will be no major changes when it is released).</para>
 <para>Download Debian here:</para>
 <para><mediaobject><imageobject><imagedata fileref="../images/debian8.png" format="EPS" align="center"></imagedata></imageobject></mediaobject></para>
 <para>After a couple of clicks on that website, I ended up downloading <command>Debian 8</command> (testing) here. It should be only one click once <command>Debian 8</command> is released (somewhere in 2015).</para>
@@ -69,15 +89,15 @@
 <screen>paul@debian8:~$ <command>ls -hl debian-testing-amd64-netinst.iso</command>
 -rw-r--r-- 1 paul paul 231M Nov 10 17:59 debian-testing-amd64-netinst.iso</screen>
 <?hard-pagebreak?>
-<para>Create a new virtualbox machine (I already have five, you might have zero for now). Click the <command>New</command> button to start a wizard that will help you create a virtual machine.</para>
+<para>Lets create a new virtualbox machine. Please don't be alarmed, because of my already existing machines, you should have zero if this is your first installation. Click the <command>New</command> button to start a wizard that will help you create a virtual machine.</para>
 <para><mediaobject><imageobject><imagedata fileref="../images/debian10_vb.png" format="EPS" align="center"></imagedata></imageobject></mediaobject></para>
 <para>The machine needs a name, this screenshot shows that I named it <command>server42</command>.</para>
 <para><mediaobject><imageobject><imagedata fileref="../images/debian10_vb2.png" format="EPS" align="center"></imagedata></imageobject></mediaobject></para>
 <?hard-pagebreak?>
-<para>Most of the defaults in Virtualbox are ok.</para>
-<para>512MB of RAM is enough to practice all the topics in this book.</para>
+<para>Most of the defaults configurations in Virtualbox, should be fine.</para>
+<para>Random Access Memory (RAM) is a controveltion topic world of GNU/Linux, but for terms of this book, 786MB of RAM is enough to practice all the topics in this book.</para>
 <para><mediaobject><imageobject><imagedata fileref="../images/centos8_mem.png" format="EPS" align="center"></imagedata></imageobject></mediaobject></para>
-<para>We do not care about the virtual disk format.</para>
+<para>For this book, Virtual disk format has no meaning. You can choose default type. In case you know what you are doing, then feel free to change to from <command>VDI</command> to <command>VMDK</command></para>
 <para><mediaobject><imageobject><imagedata fileref="../images/centos8_vdi.png" format="EPS" align="center"></imagedata></imageobject></mediaobject></para>
 <?hard-pagebreak?>
 <para>Choosing <command>dynamically allocated</command> will save you some disk space (for a small performance hit).</para>
@@ -153,28 +173,14 @@ Mon Nov 10 18:21:56 CET 2014</screen>
 <section><title>virtualbox networking</title>
 <para>You can also log on from remote (or from your Windows/Mac/Linux host computer) using <command>ssh</command> or <command>putty</command>. Change the <command>network</command> settings in the virtual machine to <command>bridge</command>. This will enable your virtual machine to receive an ip address from your local dhcp server.</para>
 <para>The default virtualbox networking is to attach virtual network cards to <command>nat</command>. This screenshiot shows the ip address <command>10.0.2.15</command> when on <command>nat</command>:</para>
-<screen>root@server42:~# <command>ifconfig</command>
-eth0      Link encap:Ethernet  HWaddr 08:00:27:f5:74:cf
-          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0
-          inet6 addr: fe80::a00:27ff:fef5:74cf/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:11 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:19 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:2352 (2.2 KiB)  TX bytes:1988 (1.9 KiB)
-
-lo        Link encap:Local Loopback
-          inet addr:127.0.0.1  Mask:255.0.0.0
-          inet6 addr: ::1/128 Scope:Host
-          UP LOOPBACK RUNNING  MTU:65536  Metric:1
-          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:0
-          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)</screen>
+<screen>root@server42:~# <command>ip -br addr sh</command>
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+enp0s3           UP             10.0.2.15/24 fe80::6e66:4c0d:ea:54a2/64
+</screen>
 <para><mediaobject><imageobject><imagedata fileref="../images/debian10_bridge.png" format="EPS" align="center"></imagedata></imageobject></mediaobject></para>
 <para>By shutting down the network interface and enabling it again, we force Debian to renew an ip address from the bridged network.</para>
 <screen>root@server42:~# <command># do not run ifdown while connected over ssh!</command>
-root@server42:~# <command>ifdown eth0</command>
+root@server42:~# <command>ip link set enp0s3 down</command>
 Killed old client process
 Internet Systems Consortium DHCP Client 4.3.1
 Copyright 2004-2014 Internet Systems Consortium.
@@ -184,9 +190,9 @@ For info, please visit https://www.isc.org/software/dhcp/
 Listening on LPF/eth0/08:00:27:f5:74:cf
 Sending on   LPF/eth0/08:00:27:f5:74:cf
 Sending on   Socket/fallback
-DHCPRELEASE on eth0 to 10.0.2.2 port 67
+DHCPRELEASE on enp0s3 to 10.0.2.2 port 67
 root@server42:~# <command># now enable bridge in virtualbox settings</command>
-root@server42:~# <command>ifup eth0</command>
+root@server42:~# <command>ip link set enp0s3 up</command>
 Internet Systems Consortium DHCP Client 4.3.1
 Copyright 2004-2014 Internet Systems Consortium.
 All rights reserved.
@@ -201,15 +207,8 @@ DHCPREQUEST on eth0 to 255.255.255.255 port 67
 DHCPOFFER from 192.168.1.42
 DHCPACK from 192.168.1.42
 bound to 192.168.1.111 -- renewal in 2938 seconds.
-root@server42:~# <command>ifconfig eth0</command>
-eth0      Link encap:Ethernet  HWaddr 08:00:27:f5:74:cf
-          inet addr:192.168.1.111  Bcast:192.168.1.255  Mask:255.255.255.0
-          inet6 addr: fe80::a00:27ff:fef5:74cf/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:15 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:31 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:3156 (3.0 KiB)  TX bytes:3722 (3.6 KiB)
+root@server42:~# <command> ip </command>
+enp0s3           UP             192.168.1.111/24 fe80::6e66:4c0d:ea:54a2/64 
 root@server42:~#</screen>
 <para>Here is an example of <command>ssh</command> to this freshly installed computer. Note that <command>Debian 8</command> has disabled remote root access, so i need to use the normal user account.</para>
 <screen>paul@debian8:~$ <command>ssh paul@192.168.1.111</command>
@@ -240,15 +239,15 @@ root@server42:~# <command>grep server42 /etc/hosts</command>
 127.0.1.1       server42.paul.local     server42
 root@server42:~#</screen>
 </section>
-<section><title>adding a static ip address</title>
+<section><title>Adding a static ip address</title>
 <para>This example shows how to add a static ip address to your server.</para>
 <para>You can use <command>ifconfig</command> to set a static address that is active until the next <command>reboot</command> (or until the next <command>ifdown</command>).</para>a
 <screen>root@server42:~# <command>ifconfig eth0:0 10.104.33.39</command></screen>
 <para>Adding a couple of lines to the <command>/etc/network/interfaces</command> file to enable an extra ip address forever. </para>
 <screen>root@server42:~# <command>vi /etc/network/interfaces</command>
 root@server42:~# <command>tail -4 /etc/network/interfaces</command>
-auto eth0:0
-iface eth0:0 inet static
+auto enp0s3:0
+iface enp0s3:0 inet static
 address 10.104.33.39
 netmask 255.255.0.0
 root@server42:~# <command>ifconfig</command>
@@ -279,13 +278,13 @@ root@server42:~#</screen>
 <?hard-pagebreak?>
 <section><title>Debian package management</title>
 <para>To get all information about the newest packages form the online repository:</para>
-<screen>root@server42:~# <command>aptitude update</command>
-Get: 1 http://ftp.be.debian.org jessie InRelease [191 kB]
-Get: 2 http://security.debian.org jessie/updates InRelease [84.1 kB]
-Get: 3 http://ftp.be.debian.org jessie-updates InRelease [117 kB]
-Get: 4 http://ftp.be.debian.org jessie-backports InRelease [118 kB]
-Get: 5 http://security.debian.org jessie/updates/main Sources [14 B]
-Get: 6 http://ftp.be.debian.org jessie/main Sources/DiffIndex [7,876 B]
+<screen>root@server42:~# <command>apt update</command>
+Get: 1 http://ftp.be.debian.org bullseye InRelease [191 kB]
+Get: 2 http://security.debian.org bullseye/updates InRelease [84.1 kB]
+Get: 3 http://ftp.be.debian.org bullseye-updates InRelease [117 kB]
+Get: 4 http://ftp.be.debian.org bullseye-backports InRelease [118 kB]
+Get: 5 http://security.debian.org bullseye/updates/main Sources [14 B]
+Get: 6 http://ftp.be.debian.org bullseye/main Sources/DiffIndex [7,876 B]
 ... (output truncated)</screen>
 <para>To download and apply all updates for all installed packages:</para>
 <screen>root@server42:~# <command>aptitude upgrade</command>
@@ -306,8 +305,8 @@ The following NEW packages will be installed:
 0 packages upgraded, 3 newly installed, 0 to remove and 0 not upgraded.
 Need to get 6,243 kB of archives. After unpacking 29.0 MB will be used.
 Do you want to continue? [Y/n/?]
-Get: 1 http://ftp.be.debian.org/debian/ jessie/main tmux amd64 1.9-6 [245 kB]
-Get: 2 http://ftp.be.debian.org/debian/ jessie/main vim-runtime all 2:7.4.488-1 [5,046 kB]
-Get: 3 http://ftp.be.debian.org/debian/ jessie/main vim amd64 2:7.4.488-1 [952 kB]</screen>
+Get: 1 http://ftp.be.debian.org/debian/ bullseye/main tmux amd64 1.9-6 [245 kB]
+Get: 2 http://ftp.be.debian.org/debian/ bullseye/main vim-runtime all 2:7.4.488-1 [5,046 kB]
+Get: 3 http://ftp.be.debian.org/debian/ bullseye/main vim amd64 2:7.4.488-1 [952 kB]</screen>
 <para>Refer to the <command>package management</command> chapter in LinuxAdm.pdf for more information.</para>
 </section>
