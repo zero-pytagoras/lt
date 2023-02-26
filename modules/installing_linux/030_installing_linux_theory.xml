@@ -1,8 +1,8 @@
-<section><title>about</title>
+<section><title>About</title>
 	<para>The past couple of years the installation of Linux has become a lot easier than before, at least for end users installing a distro like Ubuntu, Fedora, Debian or Mandrake on their home computer. Servers usually come pre-installed, and if not pre-installed, then setup of a Linux server today is very easy.</para>
 </section>
-<section><title>legacy content</title>
-	<para>Everything below this paragraph was written betweem 2003 and 2009 or so. I will rewrite this when I find the time.</para>
+<section><title>Legacy content</title>
+	<para>Everything below this paragraph was written between 2003 and 2009 or so. I will rewrite this when I find the time.</para>
 <section><title>about</title>
 	<para>Linux can be installed in many different ways. End users most commonly use cdrom's or dvd's for installation, most of the time with a working internet connection te receive updates. Administrators might prefer network installations using protocols like <command>tftp</command><indexterm><primary>tftp</primary></indexterm>, <command>bootp</command><indexterm><primary>bootp</primary></indexterm>, <command>rarp</command><indexterm><primary>rarp</primary></indexterm> and/or <command>nfs</command><indexterm><primary>nfs</primary></indexterm> or response file solutions like <command>Red Hat Kickstart</command><indexterm><primary>kickstart</primary></indexterm> or <command>Solaris Jumpstart</command><indexterm><primary>Jumpstart</primary></indexterm>.</para>
 </section>
