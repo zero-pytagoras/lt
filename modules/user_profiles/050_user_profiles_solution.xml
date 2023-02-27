@@ -1,5 +1,5 @@
 <?hard-pagebreak?>
-<section><title>solution: user profiles</title>
+<section><title>Solution: User profiles</title>
 	<para>1. Make a list of all the profile files on your system.</para>
 	<screen>ls -a ~ ; ls -l /etc/pro* /etc/bash*</screen>
 	<para>2. Read the contents of each of these, often they <command>source</command> extra scripts.</para>

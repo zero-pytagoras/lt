@@ -1,5 +1,5 @@
 <?hard-pagebreak?>
-<section><title>solution: introduction to users</title>
+<section><title>Solution: Introduction to users</title>
 	<para>1. Run a command that displays only your currently logged on user name.</para>
 	<screen>laura@debian9:~$ <command>whoami</command>
 laura

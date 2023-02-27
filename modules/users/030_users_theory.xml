@@ -1,5 +1,5 @@
 <?hard-pagebreak?>
-	<section><title>whoami</title>
+	<section><title>Whoami</title>
 		<para>The <command>whoami</command><indexterm><primary>whoami</primary></indexterm> command tells you your username.</para>
 		<screen>[paul@centos7 ~]$ <command>whoami</command>
 paul

@@ -1,5 +1,5 @@
 <?hard-pagebreak?>
-<section><title>system profile</title>
+<section><title>System profile</title>
 	<para>Both the <command>bash</command><indexterm><primary>/bin/bash</primary></indexterm> and the <command>ksh</command><indexterm><primary>/bin/ksh</primary></indexterm> shell will verify the existence of <command>/etc/profile</command><indexterm><primary>/etc/profile</primary></indexterm> and <command>source</command> it if it exists.</para>
 	<para>When reading this script, you will notice (both on Debian and on Red Hat Enterprise Linux) that it builds the PATH environment variable (among others). The script might also change the PS1 variable, set the HOSTNAME and execute even more scripts like <command>/etc/inputrc</command><indexterm><primary>/etc/inputrc</primary></indexterm></para>
 	<para>This screenshot uses grep to show PATH manipulation in <command>/etc/profile</command> on Debian.</para>
